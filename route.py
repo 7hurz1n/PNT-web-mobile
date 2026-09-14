@@ -1,19 +1,19 @@
-from main import app
-from flask import render_template
+from flask import Blueprint,render_template
 
+routes = Blueprint('app', __name__)
 
-@app.route('/')
+@routes.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/2')
+@routes.route('/2')
 def page2():
     return render_template('page2.html')
 
-@app.route('/3')
+@routes.route('/3')
 def page3():
     return render_template('page3.html')
 
-@app.route('/4')
+@routes.route('/4')
 def page4():
     return render_template('page4.html')

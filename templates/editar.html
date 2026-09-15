@@ -32,26 +32,14 @@
 <body>
     <h1>Editar Ocorrencias</h1>
     <form method="POST">
-        <label for="ocorrenciaForm">Ocorrencia:</label>
-        <select id="ocorrenciaForm" name="ocorrenciaForm" required>
-            <option value="barulho">Barulho</option>
-            <option value="vandalismo">Vandalismo</option>
-            <option value="Vaga de Garagem bloqueada">Vaga de Garagem bloqueada</option>
-            <option value="Uso indevido da area comum">Uso indevido da area comum</option>
-            <option value="outros">Outros (especificar em detalhes)</option>
-        </select><br><br>
+        <label for="ocorrenciaForm">Ocorrencia:</label><br>
+        <textarea id="ocorrenciaForm" name="ocorrenciaForm" required>{{ ocorrencia.ocorrencia }}</textarea><br><br>
 
-        <label for="detalhesForm">Detalhes:</label>
+        <label for="detalhesForm">Detalhes:</label><br>
         <textarea id="detalhesForm" name="detalhesForm" required>{{ ocorrencia.detalhes }}</textarea><br><br>
 
-        <label for="localForm">Local:</label>
-        <select id="localForm" name="localForm" required>
-            <option value="andar1">Andar 1</option>
-            <option value="andar2">Andar 2</option>
-            <option value="andar3">Andar 3</option>
-            <option value="terraco">Terraço</option>
-            <option value="garagem">Garagem</option>
-        </select><br><br>
+        <label for="localForm">Local:</label><br>
+        <textarea id="localForm" name="localForm" required>{{ ocorrencia.local }}</textarea><br><br>
 
         <label for="dataForm">Data:</label>
         <input type="date" id="dataForm" name="dataForm" value="{{ ocorrencia.data }}" required><br><br>

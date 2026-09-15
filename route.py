@@ -13,11 +13,16 @@ def login():
     if request.method == 'GET':
         return render_template('login.html')
     elif request.method == 'POST':
+        nome = request.form['nomeForm']
         email = request.form['emailForm']
         senha = request.form['senhaForm']
 
-        novo_usuario = Ocorrencia(email=email, senha=senha)
+        novo_usuario = Ocorrencia(nome=nome, email=email, senha=senha)
         db.session.add(novo_usuario)
         db.session.commit()
 
         return "Usuário registrado com sucesso!"
+
+@routes.route('/user')
+def user():
+    return render_template('user.html')

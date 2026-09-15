@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +10,9 @@
         }
         h1 {
             color: #333;
+        }
+        p {
+            font-size: 18px;
         }
         button {
             padding: 10px 20px;
@@ -23,14 +25,14 @@
             color: inherit;
         }
     </style>
+    <title>Confirmacao</title>
 </head>
 <body>
-    <h1>Bem vindo á Página Inicial de gestão do Condominio Residencial</h1>
-    <h2>Deseja registrar uma ocorrencia?</h2>
-    <button><a href="{{ url_for('app.register') }}">Registrar</a></button>
+    <h1>Sua Ocorrência foi registrada</h1>
+    <p>Ocorrência: {{ocorrencia}}</p>
+    <p>Detalhes: {{detalhes}}</p>
+    <p>Local: {{local}}</p>
 
-    <h2>Deseja ver as ocorrencias registradas?</h2>
-    <button><a href="{{ url_for('app.historico') }}">Ver Ocorrencias</a></button>
-
+    <button><a href="{{ url_for('app.home') }}">Voltar para a página inicial</a></button>
 </body>
 </html>

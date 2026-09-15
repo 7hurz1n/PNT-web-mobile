@@ -1,3 +1,5 @@
+from threading import local
+
 from flask import Blueprint,render_template, request
 
 from db import db
@@ -8,17 +10,40 @@ routes = Blueprint('app', __name__)
 def home():
     return render_template('home.html')
 
-@routes.route('/login', methods=['GET', 'POST'])
-def login():
+@routes.route('/register', methods=['GET', 'POST'])
+def register():
     if request.method == 'GET':
-        return render_template('login.html')
+        return render_template('register.html')
     elif request.method == 'POST':
-        nome = request.form['nomeForm']
-        email = request.form['emailForm']
-        senha = request.form['senhaForm']
+        ocorrencia = request.form['ocorrenciaForm']
+        detalhes = request.form['detalhesForm']
+        local = request.form['localForm']
+        data = request.form['dataForm']
+        hora = request.form['horaForm']
 
-        novo_usuario = Ocorrencia(nome=nome, email=email, senha=senha)
-        db.session.add(novo_usuario)
+        nova_ocorrencia = Ocorrencia(ocorrencia=ocorrencia, detalhes=detalhes, local=local, data=data, hora=hora)
+        db.session.add(nova_ocorrencia)
         db.session.commit()
 
-        return render_template('user.html', nome=nome, email=email)
+        return render_template('confirmacao.html', ocorrencia=ocorrencia, detalhes=detalhes, local=local, data=data, hora=hora)
+
+@routes.route('/historico')
+def historico():
+    ocorrencias = Ocorrencia.query.all()
+    return render_template('historico.html', ocorrencias=ocorrencias)
+
+@routes.route('/editar/<int:id>', methods=['GET', 'POST'])
+def editar(id):
+    ocorrencia = Ocorrencia.query.get(id)
+    if request.method == 'GET':
+        return render_template('editar.html', ocorrencia=ocorrencia)
+    elif request.method == 'POST':
+        ocorrencia.ocorrencia = request.form['ocorrenciaForm']
+        ocorrencia.detalhes = request.form['detalhesForm']
+        ocorrencia.local = request.form['localForm']
+        ocorrencia.data = request.form['dataForm']
+        ocorrencia.hora = request.form['horaForm']
+
+        db.session.commit()
+
+        return render_template('confirmacao.html', ocorrencia=ocorrencia.ocorrencia, detalhes=ocorrencia.detalhes, local=ocorrencia.local, data=ocorrencia.data, hora=ocorrencia.hora)

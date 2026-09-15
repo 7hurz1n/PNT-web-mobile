@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        select, textarea, input {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registre sua ocorrencia</h1>
+    <form action="{{ url_for('app.register') }}" method="post">
+        <label for="ocorrenciaForm">Ocorrencia:</label><br>
+        <select name="ocorrenciaForm">
+            <option value="barulho">Barulho</option>
+            <option value="vandalismo">Vandalismo</option>
+            <option value="Vaga de Garagem bloqueada">Vaga de Garagem bloqueada</option>
+            <option value="Uso indevido da area comum">Uso indevido da area comum</option>
+            <option value="outros">Outros (especificar em detalhes)</option>
+        </select><br>
+        <label for="detalhesForm">Detalhes:</label><br>
+        <textarea name="detalhesForm"></textarea><br>
+        <label for="localForm">Local:</label><br>
+        <select name="localForm">
+            <option value="andar1">Andar 1</option>
+            <option value="andar2">Andar 2</option>
+            <option value="andar3">Andar 3</option>
+            <option value="terraco">Terraço</option>
+            <option value="garagem">Garagem</option>
+        </select><br><br>
+        <label for="dataForm">Data:</label><br>
+        <input type="date" name="dataForm"><br><br>
+        <label for="horaForm">Hora:</label><br>
+        <input type="time" name="horaForm"><br><br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

@@ -58,6 +58,7 @@
             <td>{{ ocorrencia.data }}</td>
             <td>{{ ocorrencia.hora }}</td>
             <td><a href="{{ url_for('app.editar', id=ocorrencia.id) }}">Editar</a></td>
+            <td><a href="{{ url_for('app.deletar', id=ocorrencia.id) }}">Deletar</a></td>
         </tr>
         {% endfor %}
     </table>

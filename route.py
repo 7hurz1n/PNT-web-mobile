@@ -47,3 +47,10 @@ def editar(id):
         db.session.commit()
 
         return render_template('confirmacao.html', ocorrencia=ocorrencia.ocorrencia, detalhes=ocorrencia.detalhes, local=ocorrencia.local, data=ocorrencia.data, hora=ocorrencia.hora)
+
+@routes.route('/deletar/<int:id>', methods=['GET', 'POST'])
+def deletar(id):
+    ocorrencia = Ocorrencia.query.get(id)
+    db.session.delete(ocorrencia)
+    db.session.commit()
+    return render_template('deletado.html', ocorrencia=ocorrencia.ocorrencia, detalhes=ocorrencia.detalhes, local=ocorrencia.local, data=ocorrencia.data, hora=ocorrencia.hora)

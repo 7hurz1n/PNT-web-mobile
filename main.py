@@ -1,21 +1,18 @@
-import sqlite3
-
 from flask import Flask
+from models import Ocorrencia
+from db import db
+
+
 
 app = Flask(__name__)
-conexao = sqlite3.connect('banco.db')
-cursor = conexao.cursor()
-
-cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    nome TEXT NOT NULL,
-                    email TEXT NOT NULL UNIQUE,
-                    senha TEXT NOT NULL
-                )''')
-conexao.commit()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
+db.init_app(app)
 
 from route import routes
 app.register_blueprint(routes)
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+
     app.run(debug=True)

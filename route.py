@@ -1,19 +1,23 @@
-from flask import Blueprint,render_template
+from flask import Blueprint,render_template, request
 
+from db import db
+from models import Ocorrencia
 routes = Blueprint('app', __name__)
 
 @routes.route('/')
 def home():
     return render_template('home.html')
 
-@routes.route('/2')
-def page2():
-    return render_template('page2.html')
+@routes.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    elif request.method == 'POST':
+        email = request.form['emailForm']
+        senha = request.form['senhaForm']
 
-@routes.route('/3')
-def page3():
-    return render_template('page3.html')
+        novo_usuario = Ocorrencia(email=email, senha=senha)
+        db.session.add(novo_usuario)
+        db.session.commit()
 
-@routes.route('/4')
-def page4():
-    return render_template('page4.html')
+        return "Usuário registrado com sucesso!"

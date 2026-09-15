@@ -21,8 +21,4 @@ def login():
         db.session.add(novo_usuario)
         db.session.commit()
 
-        return "Usuário registrado com sucesso!"
-
-@routes.route('/user')
-def user():
-    return render_template('user.html')
+        return render_template('user.html', nome=nome, email=email)

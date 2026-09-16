@@ -8,9 +8,9 @@ class Ocorrencia(db.Model):
     ocorrencia = db.Column(db.String(100), nullable=False)
     gravidade = db.Column(db.String(20), nullable=False)
     local = db.Column(db.String(100), nullable=False)
-    data = db.Column(db.Date, nullable=False)
-    hora = db.Column(db.Time, nullable=False)
-    descricao = db.Column(db.Text, nullable=False)
+    data = db.Column(db.String(10), nullable=False)
+    hora = db.Column(db.String(8), nullable=False)
+    detalhes = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
         return f'<Ocorrencia {self.ocorrencia}>'

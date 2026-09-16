@@ -32,13 +32,21 @@
 <body>
     <h1>Editar Ocorrencias</h1>
     <form method="POST">
+
         <label for="ocorrenciaForm">Ocorrencia:</label><br>
         <textarea id="ocorrenciaForm" name="ocorrenciaForm" required>{{ ocorrencia.ocorrencia }}</textarea><br><br>
 
         <label for="detalhesForm">Detalhes:</label><br>
         <textarea id="detalhesForm" name="detalhesForm" required>{{ ocorrencia.detalhes }}</textarea><br><br>
 
-        <label for="localForm">Local:</label><br>
+        <label for="gravidadeForm">Gravidade:</label><br>
+        <select id="gravidadeForm" name="gravidadeForm" required>
+            <option value="baixa" {{ 'selected' if ocorrencia.gravidade == 'baixa' else '' }}>Baixa</option>
+            <option value="media" {{ 'selected' if ocorrencia.gravidade == 'media' else '' }}>Média</option>
+            <option value="alta" {{ 'selected' if ocorrencia.gravidade == 'alta' else '' }}>Alta</option>
+        </select><br><br>
+
+        <label for="localForm">Local:</label>
         <textarea id="localForm" name="localForm" required>{{ ocorrencia.local }}</textarea><br><br>
 
         <label for="dataForm">Data:</label>

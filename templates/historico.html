@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='image/favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>historico de Ocorrencias</title>
+</head>
+<body>
+    <h1>Historico de Ocorrencias</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Ocorrencia</th>
+            <th>Detalhes</th>
+            <th>Gravidade</th>
+            <th>Local</th>
+            <th>Data</th>
+            <th>Hora</th>
+        </tr>
+        {% for ocorrencia in ocorrencias %}
+        <tr>
+            <td>{{ ocorrencia.id }}</td>
+            <td>{{ ocorrencia.ocorrencia }}</td>
+            <td>{{ ocorrencia.detalhes }}</td>
+            <td>{{ ocorrencia.gravidade }}</td>
+            <td>{{ ocorrencia.local }}</td>
+            <td>{{ ocorrencia.data }}</td>
+            <td>{{ ocorrencia.hora }}</td>
+            <td><a href="{{ url_for('app.editar', id=ocorrencia.id) }}">Editar</a></td>
+            <td><a href="{{ url_for('app.deletar', id=ocorrencia.id) }}">Deletar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button><a href="{{ url_for('app.home') }}">Voltar para a página inicial</a></button>
+</body>

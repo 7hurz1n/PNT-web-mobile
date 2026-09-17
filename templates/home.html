@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='image/favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Bem vindo á Página Inicial de gestão de ocorrencias</h1>
+    <h2>Deseja registrar uma ocorrencia?</h2>
+    <button><a href="{{ url_for('app.register') }}">Registrar</a></button>
+
+    <h2>Deseja ver as ocorrencias registradas?</h2>
+    <button><a href="{{ url_for('app.historico') }}">Ver Ocorrencias</a></button>
+
+</body>
+</html>

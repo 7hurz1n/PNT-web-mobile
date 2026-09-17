@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='image/favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>editar</title>
+</head>
+<body>
+    <h1>Editar Ocorrencias</h1>
+    <form method="POST">
+
+        <label for="ocorrenciaForm">Ocorrencia:</label><br>
+        <textarea id="ocorrenciaForm" name="ocorrenciaForm" required>{{ ocorrencia.ocorrencia }}</textarea><br><br>
+
+        <label for="detalhesForm">Detalhes:</label><br>
+        <textarea id="detalhesForm" name="detalhesForm" required>{{ ocorrencia.detalhes }}</textarea><br><br>
+
+        <label for="gravidadeForm">Gravidade:</label><br>
+        <select id="gravidadeForm" name="gravidadeForm" required>
+            <option value="baixa" {{ 'selected' if ocorrencia.gravidade == 'baixa' else '' }}>Baixa</option>
+            <option value="media" {{ 'selected' if ocorrencia.gravidade == 'media' else '' }}>Média</option>
+            <option value="alta" {{ 'selected' if ocorrencia.gravidade == 'alta' else '' }}>Alta</option>
+        </select><br><br>
+
+        <label for="localForm">Local:</label>
+        <textarea id="localForm" name="localForm" required>{{ ocorrencia.local }}</textarea><br><br>
+
+        <label for="dataForm">Data:</label>
+        <input type="date" id="dataForm" name="dataForm" value="{{ ocorrencia.data }}" required><br><br>
+
+        <label for="horaForm">Hora:</label>
+        <input type="time" id="horaForm" name="horaForm" value="{{ ocorrencia.hora }}" required><br><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='image/favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Ocorrência Deletada</title>
+</head>
+<body>
+    <h1>Ocorrência Deletada</h1>
+    <p>A ocorrência "{{ ocorrencia }}" foi deletada com sucesso.</p>
+    <p>Detalhes: {{ detalhes }}</p>
+    <p>Local: {{ local }}</p>
+    <p>Data: {{ data }}</p>
+    <p>Hora: {{ hora }}</p>
+    <p>Gravidade: {{ gravidade }}</p>
+    <button><a href="{{ url_for('app.historico') }}">Voltar ao Histórico</a></button>
+</body>
+</html>

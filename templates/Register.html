@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='image/favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Register</title>
+</head>
+<body>
+    <h1>Registre sua ocorrencia</h1>
+    <form action="{{ url_for('app.register') }}" method="post">
+
+        <label for="ocorrenciaForm">Ocorrencia:</label><br>
+        <textarea name="ocorrenciaForm"></textarea><br>
+
+        <label for="detalhesForm">Detalhes:</label><br>
+        <textarea name="detalhesForm"></textarea><br>
+
+        <label for="gravidadeForm">Gravidade:</label><br>
+        <select name="gravidadeForm">
+            <option value="baixa">Baixa</option>
+            <option value="media">Média</option>
+            <option value="alta">Alta</option>
+        </select><br><br>
+
+        <label for="localForm">Local:</label><br>
+        <textarea name="localForm"></textarea><br>
+
+        <label for="dataForm">Data:</label><br>
+        <input type="date" name="dataForm"><br><br>
+
+        <label for="horaForm">Hora:</label><br>
+        <input type="time" name="horaForm"><br><br>
+
+        <button type="submit">Register</button> <button><a href="{{ url_for('app.home') }}">Voltar</a></button>
+    </form>
+</body>
+</html>
